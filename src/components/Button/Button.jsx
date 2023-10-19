@@ -1,16 +1,11 @@
-import PropTypes from 'prop-types';
-import { ButtonLearn } from './Button.styled';
+import { ButtonStyled } from './Button.styled';
 
-const Button = ({ text, onClick }) => {
+const Button = ({ buttonName, onClick, width }) => {
   return (
-    <ButtonLearn type="button" onClick={onClick}>
-      {text}
-    </ButtonLearn>
+    <ButtonStyled type="button" onClick={onClick} width={width}>
+      {buttonName}
+    </ButtonStyled>
   );
-};
-
-Button.propTypes = {
-  buttonName: PropTypes.string.isRequired,
 };
 
 export default Button;

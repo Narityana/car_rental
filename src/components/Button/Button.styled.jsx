@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const ButtonLearn = styled.button`
-  width: 274px;
+export const ButtonStyled = styled.button`
+  width: ${props => props.width};
   height: 44px;
   padding: 12px;
 
@@ -27,8 +27,4 @@ export const ButtonLearn = styled.button`
   //   box-shadow: none;
   //   background-color: #0b44cd;
   // }
-`;
-
-export const ButtonRental = styled(ButtonLearn)`
-  width: 168px;
 `;

@@ -20,18 +20,6 @@ export const PhotoContainer = styled.div`
   border-radius: 14px;
 `;
 
-export const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-export const MainDetails = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
 export const LikeButton = styled.button`
   position: absolute;
   top: 14px;
@@ -80,30 +68,36 @@ export const GradientOverlay = styled.div`
   border-radius: 14px;
 `;
 
-export const CardTitle = styled.p`
+export const DetailsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
+export const MainDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const CardTitle = styled.div`
+  display: flex;
   margin-bottom: 8px;
-
   font-family: Manrope;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
   color: var(--text-black);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px;
 `;
 
-export const Model = styled(CardTitle)`
+export const Model = styled.span`
   margin-left: 2px;
   color: var(--blue);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90px;
+  max-width: 60px;
 `;
 
 export const Details = styled.div`
@@ -114,27 +108,30 @@ export const Details = styled.div`
   line-height: 1.5;
   color: var(--text-grey);
 `;
-export const Text = styled.span`
+
+export const ModelTooltip = styled.span`
   visibility: hidden;
   width: 120px;
   bottom: 110%;
   left: 50%;
   margin-left: -60px;
-
-  background-color: rgb(255, 255, 255);
-  color: var(--networks);
+  font-size: 12px;
+  background-color: var(--secondwhite);
+  color: var(--blue);
   text-align: center;
   border-radius: 6px;
-  border: 1px solid var(--networks);
   padding: 5px 0;
   position: absolute;
   z-index: 100;
+  transition: var(--cubic);
 `;
+
 export const Tooltip = styled.div`
   position: relative;
-  display: inline-block;
+  display: flex;
 
-  &:hover ${Text} {
+  &:hover ${ModelTooltip} {
     visibility: visible;
+    transition: var(--cubic);
   }
 `;

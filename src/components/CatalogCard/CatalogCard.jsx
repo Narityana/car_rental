@@ -16,10 +16,10 @@ import {
   CardTitle,
   Details,
   Tooltip,
-  Text,
+  ModelTooltip,
 } from './CatalogCard.styled';
 
-const CatalogCard = ({ details }) => {
+const CatalogCard = ({ details, onLearnMoreClick }) => {
   const {
     id,
     year,
@@ -59,11 +59,13 @@ const CatalogCard = ({ details }) => {
         <MainDetails>
           <Tooltip>
             <CardTitle>
-              {`${make}`} <Model> {`${model}`}</Model>
-              <Text>{`${model}`}</Text>, {`${year}`}
+              <ModelTooltip>{`${model}`}</ModelTooltip>
+              <p>{`${make}`}</p>
+              <Model> {`${model}`}</Model>
+              <p>, {`${year}`}</p>
             </CardTitle>
-            <CardTitle>{rentalPrice}</CardTitle>
           </Tooltip>
+          <CardTitle>{rentalPrice}</CardTitle>
         </MainDetails>
         <Details>
           <p>{city}</p>
@@ -75,7 +77,11 @@ const CatalogCard = ({ details }) => {
         </Details>
       </DetailsContainer>
 
-      <Button text="Learn more" />
+      <Button
+        buttonName="Learn more"
+        width="274px"
+        onClick={onLearnMoreClick}
+      />
     </Container>
   );
 };

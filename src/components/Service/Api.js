@@ -3,15 +3,13 @@ import axios from 'axios';
 // const fetch = require('node-fetch');
 
 axios.defaults.baseURL = 'https://64be5da45ee688b6250c46d7.mockapi.io';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     accept: 'application/json',
-//   },
-// };
-
-export async function fetchCars() {
-  const response = await axios.get('/adverts');
+export async function fetchCars(page, per_page) {
+  const response = await axios.get('/adverts', {
+    params: {
+      page: page,
+      limit: per_page,
+    },
+  });
   return response.data;
 }
 

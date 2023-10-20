@@ -7,7 +7,7 @@ import {
   selectIsLoading,
   selectorPage,
 } from 'redux/cars/selectors';
-// import { setPage } from 'redux/pageSlice';
+import { setPage } from 'redux/pageSlice';
 
 import Loader from 'components/Loader';
 import ListCars from 'components/ListCars';
@@ -27,7 +27,7 @@ const CatalogCars = () => {
   console.log(carsList);
 
   const handleLoadMore = () => {
-    dispatch(fetchCars({ page: page + 1, per_page }));
+    dispatch(setPage(page + 1));
   };
 
   return (

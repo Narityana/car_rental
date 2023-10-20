@@ -1,6 +1,6 @@
-import Cars from 'components/Catalog';
+import CatalogCars from 'components/Catalog';
 
 const CatalogPage = () => {
-  return <Cars />;
+  return <CatalogCars />;
 };
 export default CatalogPage;

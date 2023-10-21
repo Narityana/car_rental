@@ -11,7 +11,8 @@ const CatalogCars = () => {
   const error = useSelector(selectError);
   const carsList = useSelector(selectCars);
   const [page, setPage] = useState(1);
-  // const page = useSelector(selectorPage);
+
+  const [showLoadMore, setShowLoadMore] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,8 +20,19 @@ const CatalogCars = () => {
   }, [dispatch, page]);
   console.log(page);
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
+  // const handleLoadMore = () => {
+  //   setPage(page + 1); // Спочатку змінюємо сторінку
+  //   dispatch(fetchCars(page + 1));
+  // };
+
+  const handleLoadMore = async () => {
+    setPage(prevState => prevState + 1);
+
+    const response = await dispatch(fetchCars(page + 1));
+    console.log(response);
+    if (response.payload.length < 8) {
+      setShowLoadMore(false);
+    }
   };
 
   return (
@@ -30,7 +42,7 @@ const CatalogCars = () => {
       {error && <b>Oops! Something went wrong. Please try again later.</b>}
       <ListCars carsData={carsList} />
 
-      <Button onClick={handleLoadMore}>Load More</Button>
+      {showLoadMore && <Button onClick={handleLoadMore}>Load More</Button>}
     </Section>
   );
 };

@@ -13,7 +13,7 @@ const handleRejected = (state, action) => {
 const handleFetchAllFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-
+  // state.cars = [...state.cars, ...action.payload];
   if (state.page === 1) {
     state.cars = action.payload;
   } else {

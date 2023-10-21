@@ -62,8 +62,10 @@ const CatalogCard = ({ car }) => {
   }, [favoritesList, car]);
 
   const toggleFavorite = () => {
-    if (favoritesList) {
-      dispatch(removeFromFavorites(car));
+    setIsFavorite(prevState => !prevState);
+
+    if (favoritesList.some(item => item.id === car.id)) {
+      dispatch(removeFromFavorites(car.id));
     } else {
       dispatch(addToFavorites(car));
     }
@@ -95,6 +97,7 @@ const CatalogCard = ({ car }) => {
               <p>, {`${year}`}</p>
             </CardTitle>
           </Tooltip>
+
           <CardTitle>{rentalPrice}</CardTitle>
         </MainDetails>
         <Details>
@@ -106,7 +109,6 @@ const CatalogCard = ({ car }) => {
           <p>{oneFunctionality}</p>
         </Details>
       </DetailsContainer>
-
       <Button
         buttonName="Learn more"
         width="274px"

@@ -5,11 +5,15 @@ import {
   removeFromFavorites,
 } from 'redux/cars/favorites/favoritesSlice';
 import { selectorFavorites } from 'redux/cars/favorites/favoritesSelectors';
+
 import { splitAddress } from '../helpers/AdressHelper';
 import { findShortestFunctionality } from '../helpers/FunctionalHelper';
+import Modal from '../Modal/Modal';
+import ModalCard from 'components/ModalCard';
 import defaultPhoto from '../../images/image.png';
 import Icon from '../../images/icons.svg';
 import Button from 'components/Button';
+
 import {
   Container,
   Photo,
@@ -25,7 +29,6 @@ import {
   Tooltip,
   ModelTooltip,
 } from './CatalogCard.styled';
-// import { useEffect } from 'react';
 
 const CatalogCard = ({ car }) => {
   const {
@@ -54,7 +57,11 @@ const CatalogCard = ({ car }) => {
   const { favoritesList } = useSelector(selectorFavorites);
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const toggleModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
   useEffect(() => {
     if (favoritesList.some(item => item.id === car.id)) {
       setIsFavorite(true);
@@ -65,7 +72,7 @@ const CatalogCard = ({ car }) => {
     setIsFavorite(prevState => !prevState);
 
     if (favoritesList.some(item => item.id === car.id)) {
-      dispatch(removeFromFavorites(car.id));
+      dispatch(removeFromFavorites(car));
     } else {
       dispatch(addToFavorites(car));
     }
@@ -109,11 +116,12 @@ const CatalogCard = ({ car }) => {
           <p>{oneFunctionality}</p>
         </Details>
       </DetailsContainer>
-      <Button
-        buttonName="Learn more"
-        width="274px"
-        // onClick={onLearnMoreClick}
-      />
+      <Button buttonName="Learn more" width="274px" onClick={toggleModal} />
+      {isModalOpen && (
+        <Modal onClose={toggleModal}>
+          <ModalCard car={car} onClose={toggleModal} />
+        </Modal>
+      )}
     </Container>
   );
 };

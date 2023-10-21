@@ -12,7 +12,7 @@ const ListCars = ({ carsData }) => {
         {carsData.map(item => (
           <CatalogCard
             key={item.id}
-            details={item}
+            car={item}
             // onLearnMoreClick={onLearnMoreClick}
           />
         ))}

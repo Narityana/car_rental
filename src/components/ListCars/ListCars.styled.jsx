@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  margin: 0 auto;
+  margin: 0 128px;
+  background-color: red;
 `;
 
 export const List = styled.ul`

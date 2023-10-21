@@ -20,11 +20,11 @@ export const PhotoContainer = styled.div`
   border-radius: 14px;
 `;
 
-export const LikeButton = styled.button`
+export const LikeButton = styled.div`
   position: absolute;
   top: 14px;
   right: 14px;
-  
+
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -32,22 +32,6 @@ export const LikeButton = styled.button`
   border: none;
   background: none;
   padding: 0px;
-
-  &:hover,
-  &:focus {
-    svg {
-      stroke: var(--blue);
-      fill: var(--blue);
-      transition: var(--cubic);
-    }
-  }
-
-  // &.active {
-  //   svg {
-  //     stroke: #3470ff;
-  //     fill: #3470ff;
-  //   }
-  }
 `;
 
 export const IconHeart = styled.svg`

@@ -1,7 +1,14 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from 'redux/cars/favorites/favoritesSlice';
+import { selectorFavorites } from 'redux/cars/favorites/favoritesSelectors';
 import { splitAddress } from '../helpers/AdressHelper';
 import { findShortestFunctionality } from '../helpers/FunctionalHelper';
-import defaultPhoto from '../images/image.png';
-import Icon from '../images/icons.svg';
+import defaultPhoto from '../../images/image.png';
+import Icon from '../../images/icons.svg';
 import Button from 'components/Button';
 import {
   Container,
@@ -18,8 +25,9 @@ import {
   Tooltip,
   ModelTooltip,
 } from './CatalogCard.styled';
+// import { useEffect } from 'react';
 
-const CatalogCard = ({ details, onLearnMoreClick }) => {
+const CatalogCard = ({ car }) => {
   const {
     id,
     year,
@@ -27,7 +35,6 @@ const CatalogCard = ({ details, onLearnMoreClick }) => {
     model,
     type,
     img,
-
     // fuelConsumption,
     // engineSize,
     // accessories,
@@ -37,21 +44,44 @@ const CatalogCard = ({ details, onLearnMoreClick }) => {
     address,
     // rentalConditions,
     // mileage,
-  } = details;
-
+  } = car;
   const photo = img ? `${img}` : `${defaultPhoto}`;
 
   const { city, country } = splitAddress(address);
   const oneFunctionality = findShortestFunctionality(functionalities);
+
+  const dispatch = useDispatch();
+  const { favoritesList } = useSelector(selectorFavorites);
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (favoritesList.some(item => item.id === car.id)) {
+      setIsFavorite(true);
+    }
+  }, [favoritesList, car]);
+
+  const toggleFavorite = () => {
+    if (favoritesList) {
+      dispatch(removeFromFavorites(car));
+    } else {
+      dispatch(addToFavorites(car));
+    }
+  };
 
   return (
     <Container>
       <PhotoContainer>
         <Photo src={photo} alt={`${make} ${model} ${year}`} />
         <GradientOverlay />
-        <LikeButton type="button">
+
+        <LikeButton onClick={toggleFavorite}>
           <IconHeart>
-            <use href={`${Icon}#icon-heart`} />
+            <use
+              href={
+                !isFavorite ? `${Icon}#icon-heart` : `${Icon}#icon-heart-active`
+              }
+            />
           </IconHeart>
         </LikeButton>
       </PhotoContainer>
@@ -80,7 +110,7 @@ const CatalogCard = ({ details, onLearnMoreClick }) => {
       <Button
         buttonName="Learn more"
         width="274px"
-        onClick={onLearnMoreClick}
+        // onClick={onLearnMoreClick}
       />
     </Container>
   );

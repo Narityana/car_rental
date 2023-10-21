@@ -29,6 +29,8 @@ import {
   Details,
   Tooltip,
   ModelTooltip,
+  Vector,
+  P,
 } from './CatalogCard.styled';
 
 const CatalogCard = ({ car }) => {
@@ -113,12 +115,15 @@ const CatalogCard = ({ car }) => {
           <CardTitle>{rentalPrice}</CardTitle>
         </MainDetails>
         <Details>
-          <p>{city}</p>
-          <p>{country}</p>
-          <p>{rentalCompany}</p>
-          <p>{type}</p>
-          <p>{id}</p>
-          <p>{oneFunctionality}</p>
+          <P>
+            {city} <Vector> | </Vector> {country} <Vector> | </Vector>
+            {rentalCompany}
+          </P>
+          <P>
+            {type} <Vector> | </Vector> {id}
+            <Vector> | </Vector>
+            {oneFunctionality}
+          </P>
         </Details>
       </DetailsContainer>
       <Button buttonName="Learn more" width="274px" onClick={toggleModal} />

@@ -14,7 +14,7 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   transition: var(--cubic);
-
+  margin-bottom: 20px;
   &:hover {
     color: rgb(245 244 154);
     font-size: 18px;

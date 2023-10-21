@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 import {
   addToFavorites,
   removeFromFavorites,
-} from 'redux/cars/favorites/favoritesSlice';
-import { selectorFavorites } from 'redux/cars/favorites/favoritesSelectors';
+} from 'redux/favorites/favoritesSlice';
+import { selectorFavorites } from 'redux/favorites/favoritesSelectors';
 
-import { splitAddress } from '../helpers/AdressHelper';
-import { findShortestFunctionality } from '../helpers/FunctionalHelper';
+import { fetchPhoto } from 'helpers/PhotoHelper';
+import { splitAddress } from '../../helpers/AdressHelper';
+import { findShortestFunctionality } from '../../helpers/FunctionalHelper';
 import Modal from '../Modal/Modal';
 import ModalCard from 'components/ModalCard';
 import defaultPhoto from '../../images/image.png';
@@ -48,7 +49,6 @@ const CatalogCard = ({ car }) => {
     // rentalConditions,
     // mileage,
   } = car;
-  const photo = img ? `${img}` : `${defaultPhoto}`;
 
   const { city, country } = splitAddress(address);
   const oneFunctionality = findShortestFunctionality(functionalities);
@@ -58,6 +58,7 @@ const CatalogCard = ({ car }) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [photo, setPhoto] = useState();
 
   const toggleModal = () => {
     setIsModalOpen(prevState => !prevState);
@@ -77,6 +78,10 @@ const CatalogCard = ({ car }) => {
       dispatch(addToFavorites(car));
     }
   };
+
+  useEffect(() => {
+    fetchPhoto(img, setPhoto, defaultPhoto);
+  }, [img]);
 
   return (
     <Container>

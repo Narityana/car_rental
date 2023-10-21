@@ -13,7 +13,6 @@ export const fetchCars = createAsyncThunk(
           limit: per_page,
         },
       });
-      console.log('thi is your response');
       return response.data;
     } catch (error) {
       console.log('error');

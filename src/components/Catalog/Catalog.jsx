@@ -11,7 +11,7 @@ import { setPage } from 'redux/pageSlice';
 
 import Loader from 'components/Loader';
 import ListCars from 'components/ListCars';
-
+import { Section, Button } from './Catalog.styled';
 const CatalogCars = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -24,21 +24,20 @@ const CatalogCars = () => {
   useEffect(() => {
     dispatch(fetchCars({ page, per_page }));
   }, [dispatch, page]);
-  console.log(carsList);
 
   const handleLoadMore = () => {
     dispatch(setPage(page + 1));
   };
 
   return (
-    <>
+    <Section>
       <h1>Our best cars</h1>
       {isLoading && !error && <Loader />}
       {error && <b>Oops! Something went wrong. Please try again later.</b>}
       <ListCars carsData={carsList} />
 
-      <button onClick={handleLoadMore}>Load More</button>
-    </>
+      <Button onClick={handleLoadMore}>Load More</Button>
+    </Section>
   );
 };
 export default CatalogCars;

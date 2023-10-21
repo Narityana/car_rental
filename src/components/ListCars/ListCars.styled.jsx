@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   margin: 0 128px;
-  background-color: red;
 `;
 
 export const List = styled.ul`
@@ -14,7 +13,7 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--cubic);
 
   &:hover {
     color: rgb(245 244 154);

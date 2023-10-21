@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
+
 import defaultPhoto from '../../images/imageBig.png';
 import Icon from '../../images/icons.svg';
 import Button from 'components/Button';
-
-import { splitAddress } from '../helpers/AdressHelper';
-import { findShortestFunctionality } from '../helpers/FunctionalHelper';
+import { fetchPhoto } from 'helpers/PhotoHelper';
+import { splitAddress } from '../../helpers/AdressHelper';
+import { findShortestFunctionality } from '../../helpers/FunctionalHelper';
 
 import {
   // Container,
@@ -40,11 +42,12 @@ const ModalCard = ({ car, onClose }) => {
     // mileage,
   } = car;
 
-  const photo = img ? `${img}` : `${defaultPhoto}`;
-
   const { city, country } = splitAddress(address);
   const oneFunctionality = findShortestFunctionality(functionalities);
-
+  const [photo, setPhoto] = useState();
+  useEffect(() => {
+    fetchPhoto(img, setPhoto, defaultPhoto);
+  }, [img]);
   return (
     <div>
       <button type="button" aria-label="close button" onClick={onClose}>

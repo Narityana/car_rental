@@ -11,20 +11,20 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { carsReducer } from './cars/slice';
-import { pageReducer } from './pageSlice';
+
 import { favoritesReducer } from './favorites/favoritesSlice';
 // import { filterReducer } from './Filter/filterSlice';
 
 const favoritesPersistConfig = {
   key: 'favorites',
   storage,
-  // whitelist: ['favorites'],
+  whitelist: ['favorites'],
 };
 
 export const store = configureStore({
   reducer: {
     cars: carsReducer,
-    page: pageReducer,
+
     favorites: persistReducer(favoritesPersistConfig, favoritesReducer),
     // filter: filterReducer,
   },

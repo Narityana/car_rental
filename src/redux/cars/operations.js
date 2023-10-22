@@ -3,25 +3,41 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://64be5da45ee688b6250c46d7.mockapi.io';
 
-export const fetchCars = createAsyncThunk(
-  'cars/fetchAll',
-  async ({ page }, thunkAPI) => {
+export const fetchCarsFirst = createAsyncThunk(
+  'cars/fetchFirstPage',
+  async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/adverts', {
+      const response = await axios.get('/adverts', {
         params: {
-          page: page,
+          page: 1,
           limit: 8,
         },
       });
-      console.log(page);
-      return { data, page };
+      return response.data;
     } catch (error) {
       console.log('error');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
+export const fetchCarsNext = createAsyncThunk(
+  'cars/fetchNextPage',
+  async ({ page }, thunkAPI) => {
+    try {
+      const response = await axios.get('/adverts', {
+        params: {
+          page: page,
+          limit: 8,
+        },
+      });
+      console.log(page);
+      return response.data;
+    } catch (error) {
+      console.log('error');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const fetchCarById = createAsyncThunk(
   'cars/fetchOne',
   async (id, thunkAPI) => {

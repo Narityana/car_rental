@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchCars } from 'redux/cars/operations';
+import { fetchCarsFirst, fetchCarsNext } from 'redux/cars/operations';
 import { selectCars, selectError, selectIsLoading } from 'redux/cars/selectors';
 
 import Loader from 'components/Loader';
@@ -11,19 +11,20 @@ const CatalogCars = () => {
   const error = useSelector(selectError);
   const carsList = useSelector(selectCars);
   const [page, setPage] = useState(1);
-  const [showLoadMore, setShowLoadMore] = useState(true);
+  const [showLoadMore, setShowLoadMore] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCars({ page }));
-  }, [dispatch, page]);
+    setShowLoadMore(true);
+    dispatch(fetchCarsFirst());
+  }, [dispatch]);
 
   const handleLoadMore = async () => {
     setPage(prevState => prevState + 1);
 
-    const response = await dispatch(fetchCars({ page }));
-
-    if (response.payload.data.length < 8) {
+    const response = await dispatch(fetchCarsNext({ page: page + 1 }));
+    console.log(response.payload.length);
+    if (response.payload.length < 8) {
       setShowLoadMore(false);
     }
   };

@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.li`
+  display: flex;
   width: 274px;
   height: 426px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  // justify-content: space-between;
 `;
 
 export const Photo = styled.img`
@@ -54,6 +58,7 @@ export const GradientOverlay = styled.div`
 
 export const DetailsContainer = styled.div`
   display: flex;
+  margin: 14px 0 28px;
   flex-direction: column;
   width: 100%;
 `;
@@ -93,6 +98,18 @@ export const Details = styled.div`
   color: var(--text-grey);
 `;
 
+export const P = styled.p`
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+
+export const Vector = styled.span`
+  margin: 0 2px;
+  font-size: 20px;
+  color: var(--border-grey);
+`;
 export const ModelTooltip = styled.span`
   visibility: hidden;
   width: 120px;

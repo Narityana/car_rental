@@ -4,7 +4,6 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 `;
 
 export const Button = styled.button`
@@ -12,7 +11,6 @@ export const Button = styled.button`
   margin-top: 100px;
   color: var(--blue);
   background: none;
-  //   background-color: var(--white);
   border: none;
   font-family: Manrope;
   font-size: 16px;

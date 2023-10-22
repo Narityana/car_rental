@@ -41,15 +41,10 @@ const CatalogCard = ({ car }) => {
     model,
     type,
     img,
-    // fuelConsumption,
-    // engineSize,
-    // accessories,
     functionalities,
     rentalPrice,
     rentalCompany,
     address,
-    // rentalConditions,
-    // mileage,
   } = car;
 
   const { city, country } = splitAddress(address);

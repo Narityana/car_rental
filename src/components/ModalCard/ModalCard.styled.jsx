@@ -73,3 +73,8 @@ export const RentalItem = styled.li`
     color: var(--blue);
   }
 `;
+
+export const Model = styled.span`
+  margin-left: 2px;
+  color: var(--blue);
+`;

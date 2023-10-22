@@ -16,13 +16,13 @@ import {
   Item,
   RentalList,
   RentalItem,
+  Model,
 } from './ModalCard.styled';
 
 import {
   Photo,
   DetailsContainer,
   MainDetails,
-  Model,
   CardTitle,
   Details,
 } from '../CatalogCard/CatalogCard.styled';
@@ -76,8 +76,6 @@ const ModalCard = ({ car, onClose }) => {
             <Model> {`${model}`}</Model>
             <p>, {`${year}`}</p>
           </CardTitle>
-
-          {/* <CardTitle>{rentalPrice}</CardTitle> */}
         </MainDetails>
         <Details>
           <Item>{country}</Item>

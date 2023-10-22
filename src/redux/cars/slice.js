@@ -15,11 +15,7 @@ const handleFetchFirstFulfilled = (state, action) => {
   state.error = null;
   state.cars = action.payload;
 };
-// const handleFetchOneFullfilld = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.cars = action.payload;
-// };
+
 const handleFetchNextFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;

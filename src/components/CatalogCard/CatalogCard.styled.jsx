@@ -89,7 +89,11 @@ export const Model = styled.span`
   max-width: 60px;
 `;
 
-export const Details = styled.div`
+export const Details = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -6px;
+  margin-bottom: 4px;
   font-family: Manrope;
   font-size: 12px;
   font-style: normal;

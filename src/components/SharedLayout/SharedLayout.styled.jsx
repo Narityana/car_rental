@@ -3,26 +3,36 @@ import { NavLink } from 'react-router-dom';
 import { IoCarSportSharp } from 'react-icons/io5';
 
 export const Wrapper = styled.div`
+  display: flex;
   width: 1440px;
+  min-height: 100vh;
   margin: 0 auto;
-  background-color: white;
+`;
+
+export const Section = styled.div`
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Header = styled.header`
   padding: 10px 30px;
-  height: 100px;
   display: flex;
-
   align-items: center;
   width: 100%;
   border-bottom: 2px solid var(--blue);
 `;
+
 export const ContainerLogo = styled.div`
   display: flex;
   width: 1200px;
   align-items: flex-end;
-  margin: 0 auto;
 `;
+
 export const Links = styled(NavLink)`
   padding: 5px 10px;
   border-radius: 5px;
@@ -43,14 +53,13 @@ export const Links = styled(NavLink)`
 `;
 
 export const Footer = styled.footer`
-margin-top: 20px;  
+margin-top: 15px;
+margin-bottom: 15px;
 padding: 10px 30px;
   height: 70px;
   display: flex;
   width: 100%;
   border-top: 1px solid #fff;
-  
-  justify-content: center;
   align-items: center;
 }
 `;
@@ -73,4 +82,5 @@ export const NavContainer = styled.nav`
 export const Main = styled.main`
   width: 100%;
   margin: 0px auto;
+  display: flex;
 `;

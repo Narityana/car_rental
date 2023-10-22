@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  margin: 0 128px;
+  margin: 0 10px;
 `;
 
 export const List = styled.ul`
@@ -10,6 +10,7 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 29px;
+  justify-content: center;
 `;
 
 export const Item = styled.li`

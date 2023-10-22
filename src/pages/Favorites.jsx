@@ -7,7 +7,7 @@ const Favorites = () => {
 
   return (
     <>
-      <h1>This is your favorit cars</h1>
+      {/* <h1>This is your favorit cars</h1> */}
       {favoritesList.length > 0 ? (
         <ListCars carsData={favoritesList} />
       ) : (

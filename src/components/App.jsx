@@ -4,7 +4,7 @@ import SharedLayout from './SharedLayout';
 
 const Home = lazy(() => import('../pages/Home'));
 const Catalog = lazy(() => import('../pages/CatalogPage'));
-const Favorites = lazy(() => import('../pages/Favorites'));
+const Favorites = lazy(() => import('../pages/FavoritesPage/Favorites'));
 const Error = lazy(() => import('../pages/ErrorPage'));
 
 export const App = () => {

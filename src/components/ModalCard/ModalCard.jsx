@@ -14,18 +14,12 @@ import {
   Description,
   Title,
   Item,
-  // P,
   RentalList,
   RentalItem,
 } from './ModalCard.styled';
 
 import {
-  // Container,
   Photo,
-  // PhotoContainer,
-  // LikeButton,
-  // IconHeart,
-  // GradientOverlay,
   DetailsContainer,
   MainDetails,
   Model,
@@ -46,7 +40,6 @@ const ModalCard = ({ car, onClose }) => {
     accessories,
     functionalities,
     rentalPrice,
-
     address,
     description,
     rentalConditions,

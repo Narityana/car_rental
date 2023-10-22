@@ -82,6 +82,19 @@ const CatalogCard = ({ car }) => {
   };
 
   useEffect(() => {
+    const body = document.body;
+    if (isModalOpen) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+    }
+
+    return () => {
+      body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+
+  useEffect(() => {
     fetchPhoto(img, setPhoto, defaultPhoto);
   }, [img]);
 

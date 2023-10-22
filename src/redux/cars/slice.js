@@ -13,11 +13,11 @@ const handleRejected = (state, action) => {
 const handleFetchAllFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  // state.cars = [...state.cars, ...action.payload];
-  if (state.page === 1) {
-    state.cars = action.payload;
+
+  if (action.payload.page === 1) {
+    state.cars = action.payload.data;
   } else {
-    state.cars = [...state.cars, ...action.payload];
+    state.cars = [...state.cars, ...action.payload.data];
   }
 };
 // const handleFetchOneFullfilld = (state, action) => {
@@ -32,7 +32,6 @@ const carsSlice = createSlice({
     cars: [],
     isLoading: false,
     error: null,
-    page: 1,
   },
 
   extraReducers: builder =>

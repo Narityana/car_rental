@@ -11,26 +11,19 @@ const CatalogCars = () => {
   const error = useSelector(selectError);
   const carsList = useSelector(selectCars);
   const [page, setPage] = useState(1);
-
   const [showLoadMore, setShowLoadMore] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCars(page));
+    dispatch(fetchCars({ page }));
   }, [dispatch, page]);
-  console.log(page);
-
-  // const handleLoadMore = () => {
-  //   setPage(page + 1); // Спочатку змінюємо сторінку
-  //   dispatch(fetchCars(page + 1));
-  // };
 
   const handleLoadMore = async () => {
     setPage(prevState => prevState + 1);
 
-    const response = await dispatch(fetchCars(page + 1));
-    console.log(response);
-    if (response.payload.length < 8) {
+    const response = await dispatch(fetchCars({ page }));
+
+    if (response.payload.data.length < 8) {
       setShowLoadMore(false);
     }
   };

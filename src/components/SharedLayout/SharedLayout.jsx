@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import Loader from 'components/Loader';
 import SideBare from 'components/SideBar/SideBar';
 import LogoImage from '../../images/Frame 22LogoYitle.png';
+import SocialNetwork from 'components/SocialNetwork/SocialNetwork';
 import { Outlet } from 'react-router-dom';
 import {
   Wrapper,
@@ -28,11 +29,7 @@ const SharedLayout = () => {
                 <LogoTitle src={LogoImage} alt="logo" />
               </div>
             </ContainerLogo>
-            {/* <NavContainer>
-            <Links to="/">Home</Links>
-            <Links to="/catalog">Catalog</Links>
-            <Links to="/favorites">Favorites</Links>
-          </NavContainer> */}
+            <SocialNetwork></SocialNetwork>
           </Header>
           <Main>
             <SideBare></SideBare>

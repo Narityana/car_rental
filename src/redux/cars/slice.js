@@ -21,6 +21,7 @@ const handleFetchNextFulfilled = (state, action) => {
   state.error = null;
   state.cars = [...state.cars, ...action.payload];
 };
+
 const carsSlice = createSlice({
   name: 'cars',
   initialState: {

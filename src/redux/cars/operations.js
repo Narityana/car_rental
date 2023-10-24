@@ -30,7 +30,6 @@ export const fetchCarsNext = createAsyncThunk(
           limit: 8,
         },
       });
-      console.log(page);
       return response.data;
     } catch (error) {
       console.log('error');
@@ -43,6 +42,19 @@ export const fetchCarById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`/adverts/:${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchCarsModel = createAsyncThunk(
+  'cars/fetchModel',
+  async (make, thunkAPI) => {
+    try {
+      const response = await axios.get(`/adverts/:${make}`);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

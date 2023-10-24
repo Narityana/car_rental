@@ -23,8 +23,8 @@ export const ButtonStyled = styled.button`
     box-shadow: none;
   }
 
-  // &:active {
-  //   box-shadow: none;
-  //   background-color: #0b44cd;
-  // }
+  &.disabled {
+    box-shadow: none;
+    background-color: var(--text-grey-darck);
+  }
 `;
